@@ -1,0 +1,17 @@
+{
+  "name": "tabrador-retriever",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Chrome extension: a link to a page that's already open switches to that tab instead of opening a new one.",
+  "type": "module",
+  "scripts": {
+    "test": "node test/url-key.test.mjs && node test/browser.cjs",
+    "test:external": "node test/external-links.cjs",
+    "icons": "node scripts/icons.cjs",
+    "store-images": "node scripts/store-images.cjs",
+    "pack": "./pack.sh"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^24.43.1"
+  }
+}

@@ -1,0 +1,2 @@
+{ "manifest_version": 3, "name": "probe", "version": "1", "permissions": ["tabs", "sessions", "webNavigation"],
+  "background": { "service_worker": "sw.js" } }

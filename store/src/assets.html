@@ -1,0 +1,157 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Tabrador Retriever store assets</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ccc; font-family: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif; color: #2B1A07; }
+  .asset { position: relative; overflow: hidden; margin: 0 0 40px; }
+  .shot { width: 1280px; height: 800px; background: #FFF4E2; }
+  h1 { position: absolute; left: 80px; top: 64px; margin: 0; font-size: 56px; font-weight: 700; letter-spacing: -1px; }
+  .sub { position: absolute; left: 80px; top: 144px; width: 1000px; margin: 0; font-size: 24px; line-height: 1.45; color: #6B4A22; }
+  .win { position: absolute; background: #fff; border-radius: 14px; box-shadow: 0 24px 60px rgba(59, 34, 7, 0.18); overflow: hidden; }
+  .strip { height: 46px; background: #DFE3E8; display: flex; align-items: flex-end; gap: 2px; padding: 0 10px; }
+  .lights { display: flex; gap: 7px; align-self: center; margin-right: 12px; }
+  .lights i { width: 12px; height: 12px; border-radius: 50%; background: #FF5F57; }
+  .lights i:nth-child(2) { background: #FEBC2E; } .lights i:nth-child(3) { background: #28C840; }
+  .tab { height: 36px; border-radius: 10px 10px 0 0; padding: 0 12px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #3C4043; white-space: nowrap; overflow: hidden; min-width: 0; flex: 0 1 190px; }
+  .tab.active { background: #fff; }
+  .tab.dupe { flex-basis: 74px; }
+  .tab.glow { box-shadow: inset 0 0 0 3px #E9A440; }
+  .fav { width: 14px; height: 14px; border-radius: 4px; flex: none; }
+  .bar { height: 46px; display: flex; align-items: center; gap: 12px; padding: 0 14px; border-bottom: 1px solid #E8EAED; }
+  .omni { flex: 1; height: 30px; border-radius: 15px; background: #F1F3F4; font-size: 13px; color: #5F6368; padding: 0 14px; display: flex; align-items: center; }
+  .page { padding: 26px 30px; }
+  .page h2 { margin: 0 0 18px; font-size: 22px; font-weight: 650; color: #202124; }
+  .line { height: 12px; border-radius: 6px; background: #ECEEF1; margin: 0 0 12px; }
+  .pill { position: absolute; font-size: 17px; font-weight: 600; padding: 7px 16px; border-radius: 18px; }
+  .count { position: absolute; font-size: 15px; color: #6B4A22; }
+  .chat { position: absolute; display: flex; background: #fff; border-radius: 14px; box-shadow: 0 24px 60px rgba(59, 34, 7, 0.18); overflow: hidden; }
+  .side { width: 120px; background: #3A3550; padding: 20px 16px; }
+  .side .line { background: rgba(255, 255, 255, 0.22); height: 10px; }
+  .msgs { flex: 1; padding: 26px 24px; }
+  .msg { display: flex; gap: 12px; margin: 0 0 22px; }
+  .avatar { width: 36px; height: 36px; border-radius: 9px; flex: none; }
+  .msg p { margin: 4px 0 0; font-size: 15px; line-height: 1.45; color: #202124; }
+  .msg b { font-size: 14px; color: #202124; }
+  .link { color: #1A62D6; text-decoration: underline; }
+  .tile-text { position: absolute; color: #FFF4E2; }
+</style>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="dog" viewBox="0 0 128 128">
+      <path d="M4 108V42a10 10 0 0 1 10-10a8 8 0 0 0 8-8V18a12 12 0 0 1 12-12h24a12 12 0 0 1 12 12v6a8 8 0 0 0 8 8h36a10 10 0 0 1 10 10v66a16 16 0 0 1-16 16H20a16 16 0 0 1-16-16z" fill="#E9A440"/>
+      <path d="M8 46C-2 64 4 92 18 98C26 88 30 66 28 46Z" fill="#9C5A1A"/>
+      <path d="M120 46C130 64 124 92 110 98C102 88 98 66 100 46Z" fill="#9C5A1A"/>
+      <circle cx="48" cy="72" r="8" fill="#3B2207"/><circle cx="80" cy="72" r="8" fill="#3B2207"/>
+      <path d="M53 89h22a4 4 0 0 1 3 6l-11 10a4 4 0 0 1-6 0l-11-10a4 4 0 0 1 3-6z" fill="#3B2207"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- 1: one tab per page -->
+<div class="asset shot" id="screenshot-1">
+  <h1>One tab per page.</h1>
+  <p class="sub">Cmd-click a link to a page you already have open, and Tabrador Retriever takes you to that tab instead of opening another copy.</p>
+
+  <span class="pill" style="left:80px; top:262px; background:#EADCC6; color:#6B4A22;">Without</span>
+  <span class="count" style="left:190px; top:270px;">5 copies of the same issue</span>
+  <div class="win" style="left:80px; top:310px; width:540px; height:420px;">
+    <div class="strip">
+      <span class="lights"><i></i><i></i><i></i></span>
+      <span class="tab"><span class="fav" style="background:#5B8DEF"></span>Sprint board</span>
+      <span class="tab dupe"><span class="fav" style="background:#E5484D"></span>PROJ…</span>
+      <span class="tab dupe"><span class="fav" style="background:#E5484D"></span>PROJ…</span>
+      <span class="tab dupe"><span class="fav" style="background:#E5484D"></span>PROJ…</span>
+      <span class="tab dupe"><span class="fav" style="background:#E5484D"></span>PROJ…</span>
+      <span class="tab dupe active"><span class="fav" style="background:#E5484D"></span>PROJ…</span>
+    </div>
+    <div class="bar"><span class="omni">tracker.example.com/browse/PROJ-142</span></div>
+    <div class="page"><h2>PROJ-142 Fix login timeout</h2><div class="line" style="width:88%"></div><div class="line" style="width:72%"></div><div class="line" style="width:80%"></div><div class="line" style="width:54%"></div></div>
+  </div>
+
+  <span class="pill" style="left:660px; top:262px; background:#E9A440; color:#3B2207;">With Tabrador Retriever</span>
+  <span class="count" style="left:900px; top:270px;">one tab, always the same</span>
+  <div class="win" style="left:660px; top:310px; width:540px; height:420px;">
+    <div class="strip">
+      <span class="lights"><i></i><i></i><i></i></span>
+      <span class="tab"><span class="fav" style="background:#5B8DEF"></span>Sprint board</span>
+      <span class="tab active" style="flex-basis:236px"><span class="fav" style="background:#E5484D"></span>PROJ-142 Fix login timeout</span>
+    </div>
+    <div class="bar"><span class="omni">tracker.example.com/browse/PROJ-142</span><svg width="22" height="22"><use href="#dog"/></svg></div>
+    <div class="page"><h2>PROJ-142 Fix login timeout</h2><div class="line" style="width:88%"></div><div class="line" style="width:72%"></div><div class="line" style="width:80%"></div><div class="line" style="width:54%"></div></div>
+  </div>
+</div>
+
+<!-- 2: links from other apps -->
+<div class="asset shot" id="screenshot-2">
+  <h1>Links from other apps, too.</h1>
+  <p class="sub">Click a link in chat, mail or your terminal. If the page is already open in Chrome, that's the tab you land on.</p>
+
+  <div class="chat" style="left:80px; top:290px; width:470px; height:420px;">
+    <div class="side"><div class="line" style="width:80%"></div><div class="line" style="width:60%"></div><div class="line" style="width:70%"></div><div class="line" style="width:50%"></div></div>
+    <div class="msgs">
+      <div class="msg"><span class="avatar" style="background:#7FB5A8"></span><div><b>Sam</b><p>Morning! Standup moved to 9:30.</p></div></div>
+      <div class="msg"><span class="avatar" style="background:#E3A27C"></span><div><b>Robin</b><p>Can you take a look at this before lunch?<br><span class="link">git.example.com/acme/app/pull/318</span></p></div></div>
+      <div class="msg"><span class="avatar" style="background:#7FB5A8"></span><div><b>Sam</b><p>Already on it.</p></div></div>
+    </div>
+  </div>
+
+  <div class="win" style="left:640px; top:270px; width:560px; height:460px;">
+    <div class="strip">
+      <span class="lights"><i></i><i></i><i></i></span>
+      <span class="tab"><span class="fav" style="background:#5B8DEF"></span>Sprint board</span>
+      <span class="tab active glow"><span class="fav" style="background:#2D333B"></span>Pull request #318</span>
+      <span class="tab"><span class="fav" style="background:#F2B233"></span>Inbox</span>
+    </div>
+    <div class="bar"><span class="omni">git.example.com/acme/app/pull/318</span><svg width="22" height="22"><use href="#dog"/></svg></div>
+    <div class="page"><h2>Fix login timeout #318</h2><div class="line" style="width:84%"></div><div class="line" style="width:66%"></div><div class="line" style="width:78%"></div><div class="line" style="width:48%"></div><div class="line" style="width:70%"></div></div>
+  </div>
+
+  <svg style="position:absolute; left:0; top:0" width="1280" height="800">
+    <defs><marker id="head" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9C5A1A"/></marker></defs>
+    <path d="M528 452C590 250 800 190 936 268" fill="none" stroke="#9C5A1A" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round" marker-end="url(#head)"/>
+  </svg>
+</div>
+
+<!-- 3: pause or duplicate -->
+<div class="asset shot" id="screenshot-3">
+  <h1>Need a copy anyway?</h1>
+  <p class="sub">Click the dog to pause Tabrador Retriever. Or right-click a tab and choose Duplicate, or cmd-click a link to the page you're on.</p>
+
+  <div class="win" style="left:140px; top:290px; width:1000px; height:250px; transform-origin: top left;">
+    <div class="strip" style="height:64px; padding:0 18px;">
+      <span class="lights" style="gap:10px;"><i style="width:16px;height:16px"></i><i style="width:16px;height:16px"></i><i style="width:16px;height:16px"></i></span>
+      <span class="tab active" style="height:50px; font-size:19px; flex-basis:330px; padding:0 18px; gap:12px;"><span class="fav" style="background:#E5484D; width:20px; height:20px;"></span>PROJ-142 Fix login timeout</span>
+    </div>
+    <div class="bar" style="height:76px; gap:20px; padding:0 22px;">
+      <span class="omni" style="height:48px; border-radius:24px; font-size:19px; padding:0 22px;">tracker.example.com/browse/PROJ-142</span>
+      <span style="position:relative; width:40px; height:40px;">
+        <svg width="40" height="40"><use href="#dog"/></svg>
+        <span style="position:absolute; right:-14px; bottom:-8px; background:#3B2207; color:#fff; font-size:13px; font-weight:600; padding:2px 6px; border-radius:7px;">off</span>
+      </span>
+    </div>
+    <div style="position:absolute; right:22px; top:150px; background:#3C4043; color:#fff; font-size:17px; padding:9px 14px; border-radius:6px;">Tabrador: off (click to turn on)</div>
+  </div>
+
+  <div style="position:absolute; left:140px; top:590px; display:flex; gap:24px; font-size:20px; color:#6B4A22;">
+    <span style="background:#fff; border-radius:12px; padding:16px 22px; box-shadow:0 10px 30px rgba(59,34,7,0.10);">Dog icon: pause and resume</span>
+    <span style="background:#fff; border-radius:12px; padding:16px 22px; box-shadow:0 10px 30px rgba(59,34,7,0.10);">Right-click a tab: Duplicate</span>
+    <span style="background:#fff; border-radius:12px; padding:16px 22px; box-shadow:0 10px 30px rgba(59,34,7,0.10);">Duplicates are never touched</span>
+  </div>
+</div>
+
+<!-- small promo tile -->
+<div class="asset" id="promo-small" style="width:440px; height:280px; background:#3B2207;">
+  <svg style="position:absolute; left:40px; top:84px" width="112" height="112"><use href="#dog"/></svg>
+  <div class="tile-text" style="left:176px; top:92px; font-size:31px; font-weight:700; line-height:1.1; letter-spacing:-0.5px;">Tabrador<br>Retriever</div>
+  <div class="tile-text" style="left:176px; top:170px; font-size:16px; color:#E9A440;">Fetches the tab you already have</div>
+</div>
+
+<!-- marquee -->
+<div class="asset" id="marquee" style="width:1400px; height:560px; background:#3B2207;">
+  <svg style="position:absolute; left:150px; top:150px" width="260" height="260"><use href="#dog"/></svg>
+  <div class="tile-text" style="left:470px; top:168px; font-size:84px; font-weight:700; letter-spacing:-2px;">Tabrador Retriever</div>
+  <div class="tile-text" style="left:474px; top:286px; font-size:34px; color:#E9A440;">Fetches the tab you already have.</div>
+  <div class="tile-text" style="left:474px; top:346px; font-size:24px; color:#D9C6A8;">Links to open pages switch tabs instead of opening copies.</div>
+</div>

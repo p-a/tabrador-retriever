@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Tabrador Retriever",
+  "short_name": "Tabrador",
+  "version": "1.1.0",
+  "description": "Fetches the tab you already have: a link to a page that's already open switches to that tab instead of opening a new one.",
+  "permissions": ["tabs", "webNavigation", "storage"],
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Tabrador: on (click to turn off)",
+    "default_icon": {
+      "16": "icons/16.png",
+      "32": "icons/32.png"
+    }
+  }
+}
