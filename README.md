@@ -54,3 +54,7 @@ npm run store-images      # store/src/assets.html -> store/*.jpg
 
 The 128 px icon has 16 px of transparent padding, as the Web Store asks. `store/listing.md` has everything the
 Web Store dashboard asks for. Bump `version` in `manifest.json` (and `package.json`) before each upload.
+
+## License
+
+[MIT](LICENSE)
