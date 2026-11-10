@@ -37,6 +37,8 @@ Jira and Confluence are trademarks of Atlassian. Tabrador Retriever isn't affili
 
 **Category:** Productivity → Workflow & Planning
 **Language:** English
+**Homepage URL:** https://github.com/p-a/tabrador-retriever
+**Support URL:** https://github.com/p-a/tabrador-retriever/issues
 
 **Graphics** (all in `store/`)
 
